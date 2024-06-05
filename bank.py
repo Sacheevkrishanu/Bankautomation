@@ -67,6 +67,7 @@ if locate_and_click(customerid, double_click= True, text_to_type='xxxxxxxx'):
                         if locate_and_click(save):
                             time.sleep(2)
                             pyautogui.press('enter')
+                            pyautogui.hotkey('alt', 'y')
                             time.sleep(7)
                             if locate_and_click(logout):
                                 time.sleep(5)
