@@ -1,9 +1,12 @@
 import rpa as r
 import pyautogui
 import time
-
+import smtplib
 
 r.init()
+
+
+
 
 r.url('https://netbanking.hdfcbank.com/netbanking/')
 r.wait()
@@ -50,11 +53,11 @@ def locate_and_click(image_file, confidence=0.9, double_click=False, text_to_typ
         print(f'Image file {image_file} not found on the screen.')
         return False
 
-if locate_and_click(customerid, double_click= True, text_to_type='xxxxxxxx'):
+if locate_and_click(customerid, double_click= True, text_to_type='xxxxxxx'):
     time.sleep(5)
     pyautogui.press('enter')
     time.sleep(5)
-    if locate_and_click(password, text_to_type='xxxxxxxx') or locate_and_click(password2, text_to_type='xxxxxxxxxx'):
+    if locate_and_click(password, text_to_type='xxxxxx') or locate_and_click(password2, text_to_type='xxxxxxx'):
         time.sleep(5)
         if locate_and_click(login):
             time.sleep(5)
@@ -71,6 +74,23 @@ if locate_and_click(customerid, double_click= True, text_to_type='xxxxxxxx'):
                             time.sleep(7)
                             if locate_and_click(logout):
                                 time.sleep(5)
+                                
+
+                                
+                                server = smtplib.SMTP('smtp.gmail.com', 587)
+                                server.starttls()
+
+                                server.login('senders email', '16 character key')
+
+                                server.sendmail('senders email', 'recievers email', 'g - drive link')
+                                print('Mail sent')
+
+
+
+time.sleep(5)  
+
+
+                                
                                
 
 
